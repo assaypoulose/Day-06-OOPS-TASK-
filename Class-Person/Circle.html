@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Circle Class</h1>
+  <p>Circle - Class</p>
+  <p>Convert the UML diagram to Typescript class.</p>
+  <p>- use number for double</p>
+  <img src="https://github.com/rvsp/typescript-oops/raw/master/images/ClassDiagram_Circle.png" alt="Circle UML Diagram" width="500" height="300">
+  <h2>Converting the UML diagram to Typescript class</h2>  
+  <pre>
+class Circle {
+    // radius: number = 1.0;
+    // color: string = "red";
+    constructor(radius: number = 1.0, color: string = "red") {
+        this.radius = radius;
+        this.color = color;
+    }
+    get radius(): number {
+        return this._radius;
+    }
+    set radius(value: number) {
+        if (value <= 0) {
+            throw new Error("Radius must be positive.");
+        }
+        this._radius = value;
+    }
+    private _radius: number;
+    get color(): string {
+        return this._color;
+    }
+    set color(value: string) {
+        this._color = value;
+    }
+    toString(): string {
+        return `Circle [radius=${this.radius}, color=${this.color}]`;
+    }
+    getArea(): number {
+        return Math.PI * Math.pow(this.radius, 2);
+    }
+    getCircumference(): number {
+        return 2 * Math.PI * this.radius;
+    }
+}
+    </pre>
+</body>
+</html>
