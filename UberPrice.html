@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Price Calculator</title>
+    <script>
+        class UberPriceCalculator {
+            constructor(baseFare, costPerMile) {
+                this.baseFare = baseFare;
+                this.costPerMile = costPerMile;
+            }
+
+            calculatePrice(distance) {
+                if (distance <= 0) {
+                    throw new Error('Distance must be a positive number.');
+                }
+                return this.baseFare + (distance * this.costPerMile);
+            }
+        }
+
+        const calculator = new UberPriceCalculator(2.5, 1.5);
+
+        function calculateUberPrice() {
+            const distance = parseFloat(document.getElementById('distance').value);
+            if (isNaN(distance)) {
+                alert('Please enter a valid distance.');
+                return;
+            }
+            const price = calculator.calculatePrice(distance);
+            document.getElementById('price').innerHTML = `$${price.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Uber Price Calculator</h1>
+    <label for="distance">Enter distance in miles:</label>
+    <input type="text" id="distance" name="distance">
+    <button onclick="calculateUberPrice()">Calculate Price</button>
+    <p>The Uber price is <span id="price"></span>.</p>
+</body>
+</html>
